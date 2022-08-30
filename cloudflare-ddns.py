@@ -58,10 +58,7 @@ def getIPs():
     global purgeUnknownRecords
     if ipv4_enabled:
         try:
-            a = requests.get(
-                "https://1.1.1.1/cdn-cgi/trace").text.split("\n")
-            a.pop()
-            a = dict(s.split("=") for s in a)["ip"]
+            a = requests.get("https://ifconfig.me').text
         except Exception:
             global shown_ipv4_warning
             if not shown_ipv4_warning:
